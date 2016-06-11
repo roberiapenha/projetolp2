@@ -8,8 +8,6 @@ package Aplicacao;
 import classes.*;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -33,6 +31,8 @@ public class Aplicacao extends Application {
         
         
         
+        /// TESTE DA ÁRVORE BINÁRIA DE BUSCA (inserção, remoção e percursos)
+        /*
         Atendente a1 = new Atendente("A1", "", "", "", "", 0, 5);
         Atendente a2 = new Atendente("A2", "", "", "", "", 0, 3);
         Atendente a3 = new Atendente("A3", "", "", "", "", 0, 7);
@@ -48,9 +48,12 @@ public class Aplicacao extends Application {
         abb.inserir(a5);
         abb.inserir(a6);
         
+        abb.remover(a1);
+        
         abb.printPreOrder();
         abb.printInOrder();
         abb.printPosOrder();
+        */
     }
 
     /**
