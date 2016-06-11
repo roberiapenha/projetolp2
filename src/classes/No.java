@@ -41,7 +41,7 @@ public class No {
 	/**
 	 * Método modificador de inserção de um novo elemento em um determinado nó da árvore
 	 * @param node - Nó em que o elemento pode ser guardado
-	 * @param atendente - Elemento que fcará guardado no nó
+	 * @param atendente - Elemento que ficará guardado no nó
 	 */
 	public void inserir(Atendente atendente) {
             if(this.atendente.getQtdCliente() > atendente.getQtdCliente()){
@@ -61,9 +61,37 @@ public class No {
 	 * Método modificador de remoção de um elemento da árvore
 	 * @param atendente - Elemento que será removido da árvore
 	 */
-	public void remover(Atendente atendente) {
+	public void remover(Atendente atendente, No pai) {
             
+            if (atendente.getQtdCliente() < this.atendente.getQtdCliente()) {
+                if (this.noEsquerda != null)
+                    this.noEsquerda.remover(atendente, this);
+            } else if (atendente.getQtdCliente() > this.atendente.getQtdCliente()) {
+                if (this.noDireita != null)
+                    this.noDireita.remover(atendente, this);
+            } else {
+                if (this.noEsquerda != null && this.noDireita != null) {
+                    this.atendente = this.noDireita.menorAtendente();
+                    this.noDireita.remover(this.atendente, this);
+                } else if (pai.noEsquerda == this) {
+                    pai.noEsquerda = (this.noEsquerda != null) ? this.noEsquerda : this.noDireita;
+                } else if (pai.noDireita == this) {
+                    pai.noDireita = (this.noEsquerda != null) ? this.noEsquerda : this.noDireita;
+                }
+            }
 	}
+        
+        /**
+         * Método de acesso que retorna o atendente com quantidade atendida de clientes imediatamente menor à do objeto
+         * @return atendente
+         */
+        public Atendente menorAtendente(){
+            if(this.noEsquerda == null){
+                return this.atendente;
+            } else {
+                return this.noEsquerda.menorAtendente();
+            }
+        }
 	
 	/**
 	 * Método de acesso que percorre a árvore em pré-ordem imprimindo os valores

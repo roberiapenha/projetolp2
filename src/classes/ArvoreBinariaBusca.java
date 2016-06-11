@@ -12,11 +12,19 @@ public class ArvoreBinariaBusca {
                 raiz.inserir(a);
         }
         
-        
         public void remover(Atendente a){
             
+            if(this.raiz != null){
+                if (this.raiz.atendente == a) {
+                    No temp = new No();
+                    temp.noEsquerda = this.raiz;
+                    this.raiz.remover(a, temp);
+                    this.raiz = temp.noEsquerda;
+                } else {
+                    this.raiz.remover(a, null);
+                }
+            }
         }
-        
         
         public ArrayList<Atendente> getNodesInOrder(){
             ArrayList<Atendente> atendentes = new ArrayList<>();
