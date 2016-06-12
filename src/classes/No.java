@@ -32,15 +32,14 @@ public class No {
             
 	/**
 	 * Método construtor de um nó com elemento inicial
-	 * @param valor - Elemento que fcará guardado no nó
+	 * @param atendente - Atendente que ficará guardado no nó
 	 */
-	public No(Atendente a) {
-            this.atendente = a;
+	public No(Atendente atendente) {
+            this.atendente = atendente;
 	}
 
 	/**
 	 * Método modificador de inserção de um novo elemento em um determinado nó da árvore
-	 * @param node - Nó em que o elemento pode ser guardado
 	 * @param atendente - Elemento que ficará guardado no nó
 	 */
 	public void inserir(Atendente atendente) {
@@ -59,7 +58,8 @@ public class No {
 
 	/**
 	 * Método modificador de remoção de um elemento da árvore
-	 * @param atendente - Elemento que será removido da árvore
+	 * @param atendente - Atendente que será removido da árvore
+         * @param pai - Nó pai do nó que é removido
 	 */
 	public void remover(Atendente atendente, No pai) {
             
@@ -82,8 +82,8 @@ public class No {
 	}
         
         /**
-         * Método de acesso que retorna o atendente com quantidade atendida de clientes imediatamente menor à do objeto
-         * @return atendente
+         * Método de acesso que retorna o atendente com quantidade atendida de clientes imediatamente menor ao da instância
+         * @return atendente com menos clientes atendidos em relação ao atendente da instância
          */
         public Atendente menorAtendente(){
             if(this.noEsquerda == null){
@@ -95,7 +95,6 @@ public class No {
 	
 	/**
 	 * Método de acesso que percorre a árvore em pré-ordem imprimindo os valores
-	 * @param node - Nó que será impresso
 	 */
 	public void printPreOrder() {
             System.out.print(", " + this.atendente.getNome());
@@ -105,7 +104,6 @@ public class No {
 
 	/**
 	 * Método de acesso que percorre a árvore em ordem imprimindo os valores
-	 * @param node - Nó que será impresso
 	 */
 	public void printEmOrdem() {
             if(this.noEsquerda != null) this.noEsquerda.printEmOrdem();
@@ -115,7 +113,6 @@ public class No {
         
         /**
          * Método de acesso que cria um ArrayList com atendentes ordenados pela sua quantidade de usuários atendidos
-         * @param node - Nó que será visitado
          * @param atendentes - ArrayList que será retornado
          */
         public void getAtendentesEmOrdem(ArrayList<Atendente> atendentes){
@@ -126,7 +123,6 @@ public class No {
 
 	/**
 	 * Método de acesso que percorre a árvore em Pós-ordem imprimindo os valores
-	 * @param node - Nó que será impresso
 	 */
 	public void printPosOrdem() {
             if(this.noEsquerda != null) this.noEsquerda.printPosOrdem();
